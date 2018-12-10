@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-head></v-head>
     <h1>我是 Foo</h1>
     <button @click="notifyTip">click me</button>
     <!--<div>-->
@@ -44,14 +43,10 @@
 </template>
 
 <script>
-  import head from './header'
     export default {
       name: "foo",
       metaInfo: {
         title: 'Foo'
-      },
-      components: {
-        'VHead': head
       },
       // asyncData ({ store, router }) {
       //   if(store.state.user) {
@@ -83,7 +78,6 @@
         }
       },
       created () {
-        console.log(this)
         // this.$axios.getList(this.paramData).then(res => {
         //   console.log(res);
         // })

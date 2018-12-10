@@ -12,6 +12,10 @@ export default {
     state.count = 11
     // console.log('121312314124========',state);
   },
+  getUserInfo(state, data) {
+    console.log(data)
+    state.userInfo = data
+  },
   getPos (state, data) {
     console.log('121312314124========',data);
     state.data = data

@@ -3,6 +3,7 @@ export default {
   firstName: 'Li',
   lastName: 'Huan',
   cities: [],
+  userInfo: null,
   user: null,
   data: null
 }

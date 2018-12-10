@@ -21,7 +21,7 @@ const createError = (resp) => {
 }
 
 const successResponse = (resp) => {
-  // // console.log('%================%',resp);
+  console.log('%================%',resp);
   // console.log('%================%',resp.data);
   // if(resp.status === 200) {
     return resp
@@ -41,6 +41,12 @@ apiRouter
     // console.log('*****************=',ctx.query);
     // console.log('cookies=====================',ctx.cookies);
     const todos = await ctx.db.getResumes(ctx.query)
+    ctx.body = successResponse(todos)
+  })
+  .get('/userinfo', async (ctx) => {
+    // console.log('*****************=',ctx.query);
+    // console.log('cookies=====================',ctx.cookies);
+    const todos = await ctx.db.getUserInfo(ctx.query)
     ctx.body = successResponse(todos)
   })
   .get('/cities', async (ctx) => {

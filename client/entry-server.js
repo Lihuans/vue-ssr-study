@@ -24,18 +24,17 @@ export default context => {
 
 
       Promise.all(matchedComponents.map(({ asyncData }) => {
-        // console.log('======================',123);
-        // if(Comment.asyncData) {
-          asyncData && asyncData({
+        if(asyncData) {
+          return asyncData({
             store,
             router,
             route: router.currentRoute,
             context
           })
-        // }
+        }
       })).then((res) => {
         console.log('res============',res);
-        console.log('store============',store.state);
+        // console.log('store============',store.state);
         // const initState = {
         //    data: res,
         //    state: store.state
