@@ -21,7 +21,7 @@ const createError = (resp) => {
 }
 
 const successResponse = (resp) => {
-  console.log('%================%',resp);
+  // console.log('%================%',resp);
   // console.log('%================%',resp.data);
   // if(resp.status === 200) {
     return resp
@@ -32,11 +32,6 @@ const successResponse = (resp) => {
 }
 
 apiRouter
-  .get('/todos', async (ctx) => {
-    console.log(ctx.db);
-    const todos = await ctx.db.getAllTodos()
-    ctx.body = successResponse(todos)
-  })
   .get('/resumes', async (ctx) => {
     // console.log('*****************=',ctx.query);
     // console.log('cookies=====================',ctx.cookies);

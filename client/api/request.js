@@ -49,14 +49,14 @@ function requestServer(baseUrl) {
     error => {
       console.log('err' + error); // for debug
       console.log('errcode' + error.response.status); // for debug
-      // if(error.response.status == 401){
-      //   let current_url = encodeURIComponent(window.location.href);
-      //   window.location.href = `${global.host_hr}/user/login?next=${current_url}`;
-      //   return
-      // } else if (error.response.status == 403){
-      //   window.location.href = `${global.host_hr}/#/noroot`;
-      //   return
-      // }
+      if(error.response.status == 401){
+        let current_url = encodeURIComponent(window.location.href);
+        window.location.href = `/login?next=${current_url}`;
+        return
+      } else if (error.response.status == 403){
+        window.location.href = `/noroot`;
+        return
+      }
       return Promise.reject(error)
     }
   );

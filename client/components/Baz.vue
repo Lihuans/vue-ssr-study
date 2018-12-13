@@ -9,12 +9,16 @@
     export default {
       name: "baz",
       asyncData ({ store, router }) {
-        return store.dispatch('getUserInfo')
+        // return store.dispatch('getUserInfo')
       },
       computed: {
         userInfo () {
+          // this.$store.dispatch('getUserInfo');
           return this.$store.state.userInfo
         }
+      },
+      mounted () {
+        this.$store.dispatch('getUserInfo');
       },
       methods: {
 

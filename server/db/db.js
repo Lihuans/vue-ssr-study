@@ -31,7 +31,7 @@ const loginRequest = axios.create({
 
 
 const createError = (resp) => {
-  console.log('resp==========',resp,'============resp');
+  // console.log('resp==========',resp,'============resp');
   const err = new Error(resp.message)
   err.code = resp.status
   return err
@@ -39,7 +39,7 @@ const createError = (resp) => {
 
 const handleRequest = (resp) => {
   // console.log('status==========',status,'============status');
-  console.log('resp==========', resp,'============resp');
+  // console.log('resp==========', resp.headers['set-cookie'],'============resp');
   // console.log('rest==========',rest.headers['set-cookie'],'============rest');
   // console.log('rest==========',rest,'============rest');
   if(resp.status === 200) {
@@ -66,6 +66,9 @@ module.exports = (appId, appKey) => {
     //     headers: getHeaders()
     //   }))
     // },
+    async login (data) {
+      return handleRequest(await loginRequest.post('/user/login', data))
+    },
     async getCityOptions () {
       return handleRequest(await request.get('/cityoptions', {
 
@@ -75,7 +78,7 @@ module.exports = (appId, appKey) => {
       return handleRequest(await request.get('/resumes', data))
     },
     async getUserInfo (data) {
-      return handleRequest(await request.get('/userinfo', data))
+      return handleRequest(await request.get('/industryoptions', data))
     },
     async getCitys () {
       return handleRequest(await request.get('/interncityoptions'))

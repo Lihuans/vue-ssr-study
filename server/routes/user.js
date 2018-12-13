@@ -10,9 +10,9 @@ const createError = (resp) => {
 }
 
 userRouter.post('/login', async (ctx) => {
-    // console.log(ctx.request.body)
-    const resp = await ctx.db.gaLogin(ctx.request.body)
-    // console.log(resp)
+    console.log(ctx.request.body)
+    const resp = await ctx.db.login(ctx.request.body)
+    console.log(resp)
     if(resp.code === 100) {
       ctx.session.user = {
         ad_session: resp.msg.ad_session

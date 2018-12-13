@@ -30,7 +30,7 @@ const isDev = process.env.NODE_ENV === 'development';
 app.keys = ['vue ssr teach']
 app.use(koaSession({
   key: 'v-ssr-id',
-  maxAge: 2*60*60*1000
+  maxAge: 4*60*60*1000
 }, app))
 
 app.use(koaBody())

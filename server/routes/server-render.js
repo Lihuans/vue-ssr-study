@@ -5,7 +5,7 @@ module.exports = async (ctx, renderer, template) => {
   ctx.headers['content-type'] = 'text/html'
   // console.log('ctx=========', ctx)
   const content = { url: ctx.path }
-  // console.log(ctx.session.user);
+  // console.log('--------------',content, '--------------');
 
   if(!ctx.session.user) {
     if(ctx.path !== '/login') {
@@ -18,6 +18,8 @@ module.exports = async (ctx, renderer, template) => {
   try {
     const appString = await renderer.renderToString(content);
     // console.log('currentRoute===============',content.router.currentRoute);
+    // console.log('ctxRoute===============',ctx.path);
+    // console.log('content===============',content);
 
 
     if (content.router.currentRoute.fullPath !== ctx.path) {

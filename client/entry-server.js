@@ -33,13 +33,8 @@ export default context => {
           })
         }
       })).then((res) => {
-        console.log('res============',res);
+        // console.log('res============',res);
         // console.log('store============',store.state);
-        // const initState = {
-        //    data: res,
-        //    state: store.state
-        // }
-        // context.state = initState
         context.state = store.state
         context.meta = app.$meta()
         context.router = router
