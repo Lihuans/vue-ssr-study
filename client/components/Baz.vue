@@ -9,7 +9,7 @@
     export default {
       name: "baz",
       asyncData ({ store, router }) {
-        // return store.dispatch('getUserInfo')
+        return store.dispatch('getUserInfo')
       },
       computed: {
         userInfo () {
@@ -18,7 +18,7 @@
         }
       },
       mounted () {
-        this.$store.dispatch('getUserInfo');
+        // this.$store.dispatch('getUserInfo');
       },
       methods: {
 

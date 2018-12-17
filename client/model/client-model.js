@@ -10,8 +10,8 @@ export default {
       return loginReq.post('/user/login', data)
     },
     getUserInfo (data) {
-      return req.get('/userinfo', {params: data})
-      // return reqR.get('/industryoptions', {params: data})
+      // return req.get('/userinfo', {params: data})
+      return reqR.get('/industryoptions', {params: data})
     },
     getCitys(data) {
       return req.get('/cities', data)
