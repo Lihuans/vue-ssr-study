@@ -1,14 +1,11 @@
 const sha1 = require('sha1')
 const axios = require('axios')
 const qs = require('qs')
-
-const className = 'vueSsr'
+const api = require('../api')
+// import api from '../api'
 
 const request = axios.create({
-  // baseURL: 'http://d.apicloud.com/mcm/api'
-  // baseURL: 'tvtest.shixiseng.com/api/app',
   baseURL: 'https://hrtest.shixiseng.com/api/v1',
-  // baseURL: 'http://adtest.mshare.cn/api/v1',
   withCredentials: true
   // transformRequest: [function(data) {
   //     return qs.stringify(data)
@@ -16,9 +13,7 @@ const request = axios.create({
 })
 
 const loginRequest = axios.create({
-  // baseURL: 'http://d.apicloud.com/mcm/api'
   baseURL: 'https://hrtest.shixiseng.com',
-  // baseURL: 'http://sxsdev.com',
   // headers: {
   //   'Content-Type': 'application/x-www-form-urlencoded'
   // },
@@ -38,6 +33,7 @@ const createError = (resp) => {
 }
 
 const handleRequest = (resp) => {
+  console.log(1111)
   // console.log('status==========',status,'============status');
   // console.log('resp==========', resp.headers['set-cookie'],'============resp');
   // console.log('rest==========',rest.headers['set-cookie'],'============rest');
@@ -51,44 +47,17 @@ const handleRequest = (resp) => {
 }
 
 
-module.exports = (appId, appKey) => {
-  // const getHeaders = () => {
-  //   const now = Date.now()
-  //   return {
-  //     'X-APICloud-AppId': appId,
-  //     'X-APICloud-AppKey': `${sha1(`${appId}UZ${appKey}UZ${now}`)}.${now}`
-  //   }
-  // }
+module.exports = () => {
   return {
-    // async getAllTodo () {
-    //   console.log(1212);
-    //   return handleRequest(await request.get(`/${className}`, {
-    //     headers: getHeaders()
-    //   }))
-    // },
     async login (data) {
-      return handleRequest(await loginRequest.post('/user/login', data))
+      return handleRequest(await loginRequest.post(api.login, data))
     },
-    async getCityOptions () {
-      return handleRequest(await request.get('/cityoptions', {
-
-      }))
-    },
-    async getResumes (data) {
-      return handleRequest(await request.get('/resumes', data))
-    },
-    async getUserInfo (data) {
-      return handleRequest(await request.get('/industryoptions', data))
+    async getIndustry (data) {
+      return handleRequest(await request.get(api.getIndustry, data))
     },
     async getCitys () {
-      return handleRequest(await request.get('/interncityoptions'))
-    },
-    async getAdPos (data) {
-      // data.ad_session = 'e3aee438-d167-442e-abfd-fa1136857f57'
-      // console.log('ctxdata2324==============',data);
-      // console.log('***************=========',data);
-      return handleRequest(await request.post('/getadpos', data))
-    },
+      return handleRequest(await request.get(api.getCities))
+    }
   }
 }
 

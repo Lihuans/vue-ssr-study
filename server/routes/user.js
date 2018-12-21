@@ -1,23 +1,21 @@
 const Router = require('koa-router')
+const api = require('../api')
+
 
 const userRouter = new Router({ prefix: '/user' })
 
-const createError = (resp) => {
-  // console.log('resp==========',resp,'============resp');
-  const err = new Error(resp.message)
-  err.code = resp.status
-  return err
-}
-
 userRouter.post('/login', async (ctx) => {
     console.log(ctx.request.body)
-    const resp = await ctx.db.login(ctx.request.body)
-    console.log(resp)
-    if(resp.code === 100) {
+    const data = await ctx.db.login(ctx.request.body);
+    // const data = resp.data
+    // console.log(resp.headers['set-cookie']);
+    if(data.code === 100) {
       ctx.session.user = {
-        ad_session: resp.msg.ad_session
+        // ad_session: resp.msg.ad_session
+        ad_session: '232-432432-345255'
+        // ad_session: resp.headers['set-cookie']
       }
-      ctx.body = resp
+      ctx.body = data
     } else {
       ctx.status = 401
       ctx.body = {

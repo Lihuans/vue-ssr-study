@@ -9,15 +9,15 @@ export function createRouter() {
     mode: 'history',
     routes: [
       { path: '/',
-        component: () => import('../components/layout.vue'),
+        component: (resolve) => require(['@/components/layout.vue'], resolve),
         children: [
-          { path: '/', component: () => import('../components/Foo.vue') },
-          { path: '/index', component: () => import('../../pages/index.vue') },
-          { path: '/bar', component: () => import('../components/Bar.vue') },
-          { path: '/baz', component: () => import('../components/Baz.vue') },
+          { path: '/', component: (resolve) => require(['@/components/Foo.vue'], resolve) },
+          { path: '/index', component: (resolve) => require(['@/pages/index.vue'], resolve) },
+          { path: '/bar', component: (resolve) => require(['@/components/Bar.vue'], resolve) },
+          { path: '/baz', component: (resolve) => require(['@/components/Baz.vue'], resolve) },
         ]
       },
-      { path: '/login', component: () => import('../../pages/login.vue') }
+      { path: '/login', component: (resolve) => require(['@/pages/login.vue'], resolve) }
     ]
   });
 

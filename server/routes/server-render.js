@@ -39,6 +39,8 @@ module.exports = async (ctx, renderer, template) => {
 
     ctx.body = html
   } catch(err) {
+    console.log(13243545)
+    ctx.log.error(err.stack);
     console.log('render error', err);
     throw err
   }

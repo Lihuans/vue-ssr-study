@@ -1,8 +1,4 @@
-// import api from '../../api'
 import api from 'model'
-// import createDb from '../../../server/db/db'
-//
-// const db = createDb()
 
 export default {
   login ({ commit }, pramas) {
@@ -17,9 +13,9 @@ export default {
       })
     })
   },
-  getUserInfo({ commit }) {
+  getIndustry({ commit }) {
     return new Promise((resolve, reject ) => {
-      api.getUserInfo({bulid_time:new Date().getTime()}).then(response => {
+      api.getIndustry().then(response => {
         const data = response.msg;
         commit('getUserInfo', data);
         resolve(response)
@@ -31,26 +27,13 @@ export default {
   getCities({ commit }) {
     return new Promise((resolve, reject ) => {
       api.getCitys().then(resp => {
-        // console.log('resp', resp);
+        console.log('resp', resp);
         const data = resp.msg;
         commit('getCities', data)
         resolve(resp)
       })
       .catch(err => {
-        // handleError(err)
         console.log(err);
-        reject(err)
-      })
-    })
-  },
-  getPos({ commit }, pramas) {
-    return new Promise((resolve, reject ) => {
-      api.getAdPos(pramas).then(response => {
-        const data = response.msg;
-        commit('getPos', data)
-        // resolve(response)
-        resolve()
-      }).catch(err => {
         reject(err)
       })
     })

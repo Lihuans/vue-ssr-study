@@ -9,7 +9,7 @@
     export default {
       name: "baz",
       asyncData ({ store, router }) {
-        return store.dispatch('getUserInfo')
+        return store.dispatch('getIndustry')
       },
       computed: {
         userInfo () {

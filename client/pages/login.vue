@@ -86,7 +86,7 @@
 <style lang="stylus" scoped>
 .login-wrap {
   min-height 100%
-  background url("../static/img/backImg.png")
+  background url("../../static/img/backImg.png")
   overflow hidden
 }
   .login-box

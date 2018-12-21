@@ -5,20 +5,26 @@ const path = require('path')
 const koaBody = require('koa-body')
 const koaSession = require('koa-session')
 const favicon = require('koa-favicon');
+const ip = require('ip');
 
 const staticRouter = require('./routes/static')
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/router')
 const userRouter = require('./routes/user')
 const createDb = require('./db/db')
-const config = require('../app.config')
+
+const logger = require('../log');
 
 const resolve = file => path.resolve(__dirname, file)
 
 const app = new koa();
 
-const db = createDb(config.db.appId, config.db.appKey)
+const db = createDb()
 
 app.use(favicon(resolve('./../static/img/favicon.ico')));
+
+app.use(logger({
+  serverIp: ip.address()
+}));
 
 app.use(async (ctx, next) => {
   ctx.db = db
@@ -54,13 +60,14 @@ app.use(async (ctx, next) => {
   } catch(err) {
     // console.log('=======================',err);
     ctx.status = 500;
-    // ctx = err
+    console.log(5550000,err)
+    ctx.log.error(err.stack)
     if(isDev) {
-      // ctx.body = err.message
       ctx.body = err.message
     } else {
       ctx.body = 'please try again later'
     }
+    await next()
   }
 });
 
@@ -73,6 +80,10 @@ app.use(async (ctx, next) => {
 //   }
 // });
 
+app.on('error', (err, ctx) => {
+  console.log(5550000,err)
+  ctx.log.error(err.stack)
+});
 
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 8080;
