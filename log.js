@@ -34,7 +34,7 @@ module.exports = (options) => {
     // appenders.out = {
     //   type: "console"
     // }
-    appenders.cheese.type = 'console'
+    // appenders.cheese.type = 'console'
     // replaceConsole = true
   }
   let config = {
