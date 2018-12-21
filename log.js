@@ -31,10 +31,10 @@ module.exports = (options) => {
   }
 
   if (env === "dev" || env === "development") {
-    // appenders.out = {
+    // appenders.out = { //控制台输出信息，并写入文件
     //   type: "console"
     // }
-    // appenders.cheese.type = 'console'
+    // appenders.cheese.type = 'console' //控制台输出信息，不写入文件
     // replaceConsole = true
   }
   let config = {
