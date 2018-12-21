@@ -15,9 +15,6 @@ import Tabs from './components/tabs'
 import elementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
-import './assets/css/base.css'
-import '../static/fonts/font.css'
-
 Vue.use(elementUI)
 Vue.use(Meta);
 Vue.use(Notification)
