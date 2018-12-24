@@ -35,6 +35,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    // 告诉 webpack 我要发布 production 了,按照 production 方式去打包。
+    // 注意一个单引号一个双引号…… 这里是要将 "production" 替换到文件里面
     new webpack.DefinePlugin({
       'process.env': env
     }),
@@ -69,11 +71,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: 'index.html',
-      inject: true,
+      inject: true,  // 自动注入
       minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeComments: true,  //去注释
+        collapseWhitespace: true,  //压缩空格
+        removeAttributeQuotes: true  //去除属性引用
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
