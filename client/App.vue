@@ -23,6 +23,7 @@ export default {
 /*@import '//at.alicdn.com/t/font_483193_zr6medyg0fre8kt9.css';*/
 @import './assets/css/base.css';
 @import '../static/fonts/font.css';
+@import 'element-ui/lib/theme-chalk/index.css';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -13,7 +13,7 @@ import Notification from './components/notification'
 import Tabs from './components/tabs'
 
 import elementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
+// import 'element-ui/lib/theme-chalk/index.css';
 
 
 Vue.use(elementUI)
